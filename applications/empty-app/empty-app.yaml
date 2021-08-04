@@ -1,0 +1,73 @@
+configuration:
+  healthcheck:
+    wait_for_ports: ALL
+    timeout: 100
+  # initialization:
+    # script: init.sh
+    
+  start:
+    # script: start.sh
+    command: ls
+debugging:
+  # allow_direct_access: true
+  connection_protocol: ssh
+# infrastructure:
+  # compute:
+  #   spec:
+  #     azure:
+  #       vm_size: $AZURE_VM_SIZE
+  # connectivity:
+  #   # external:
+  #   #   - port_info:
+  #   #       port: 30
+  #   #   - port_info:
+  #   #       port: 70
+  #   internal:
+  #     - port_info:
+  #         # port-range: 20,30-40
+  #         port: 300
+  #         ingress-healthcheck:
+  #           healthy-threshold: 5
+  #           status-codes: 200
+  #           timeout: 5
+  #           unhealthy-threshold: 2
+  #     - port_info:
+  #         port: 50
+  #         ingress-healthcheck:
+  #           timeout: 50
+  #           unhealthy-threshold: 2
+  # permissions:
+  #   azure:
+  #     managed_identity_id: sdfsdf/werw
+infrastructure:
+  connectivity:
+    external:
+    - ssh_port:
+        port: 22
+        path: ''
+    - web_port:
+        port: 80
+        path: ''
+    internal:
+    - internal_port_info:
+        port: 7001
+        path: ''
+
+inputs:
+- PORT: 80
+- AZURE_VM_SIZE: Standard_B1s
+kind: application
+source:
+  image:
+    ami:
+      - id: ssss
+        region: aaaa
+    azure_image:
+      - urn: Canonical:UbuntuServer:18.04-LTS:latest
+        username: adminuser          
+    docker_image:
+      - name: aaaa
+        tag: sdfdf
+        pull_secret: sdfsdfdfd
+  os_type: linux
+spec_version: 1

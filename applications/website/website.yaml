@@ -1,0 +1,30 @@
+configuration:
+  healthcheck:
+    timeout: 180
+    wait_for_ports: ALL
+  initialization:
+    script: init.sh
+  start:
+    script: start.sh
+debugging:
+  connection_protocol: SSH
+infrastructure:
+  compute:
+    spec:
+      azure:
+        vm_size: $AZURE_VM_SIZE
+  connectivity:
+    external:
+    - web:
+        port: $PORT
+inputs:
+- PORT: 80
+- AZURE_VM_SIZE: Standard_B1s
+kind: application
+source:
+  image:
+    azure_image:
+    - urn: Canonical:UbuntuServer:16.04-LTS:latest
+      username: adminuser
+  os_type: linux
+spec_version: 1

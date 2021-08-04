@@ -1,0 +1,49 @@
+applications:
+  - empty-app
+
+services:
+  - empty-app
+  
+  # - service1:
+  #     input_values:
+  #       - MANAGED_IDENTITY: ${colony.environment.id}/${INPUT1}
+  #       - DB_NAME: c
+  #       - DB_USER: d
+  #       - DB_PASS: d
+  #       - SANDBOX_ID: $colony.environment.id
+  #     depends_on:
+  #       - empty-app
+
+# artifacts:
+#   - empty-app: sdfsdf
+#   - java-spring-website
+#   - aaaaa: sdfsdfsdf
+  
+
+inputs:
+  - INPUT1
+  - INPUT2
+clouds:
+- Azure: westus2
+# debugging:
+  # bastion_availability: enabled-on
+
+# ingress:
+#   listeners:
+#     - https: 333
+#       certificate: https://my_vault.vault.azure.net/secrets/my_cert/915c739593b14c0497178ea2ab423647
+#     - http: 3243
+#       redirect_to_listener: 333
+#     - https: 555
+#       certificate: https://my_vault.vault.azure.net/secrets/my_cert/915c739593b14c0497178ea2ab423647
+#       rules:
+#         - application: empty-app
+#           host: aaa
+#         - port: 33
+#           default: true
+#           application: empty-app        
+
+kind: blueprint
+metadata:
+  description: 'empty vm'
+spec_version: 1
